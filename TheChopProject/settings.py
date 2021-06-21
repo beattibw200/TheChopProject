@@ -12,8 +12,6 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 
 import os
 
-
-
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -27,7 +25,10 @@ SECRET_KEY = '0i)f6w^mh=l8mob+muwl9k$#0#=2b%0f_+ml!4j8o$st*suiei'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['67.249.10.220', 'localhost']
+
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
 
 
 # Application definition
@@ -54,9 +55,6 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'TheChopProject.urls'
-
-STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
-
 
 TEMPLATES = [
     {
@@ -125,9 +123,3 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
-
-import dj_database_url 
-prod_db  =  dj_database_url.config(conn_max_age=500)
-DATABASES['default'].update(prod_db)
-
-ALLOWED_HOSTS = ['myapplication.herokuapp.com']

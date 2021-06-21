@@ -8,43 +8,48 @@
         <hr class="my-4">
         <p>Select a function from below to get started.</p>
         <p class="lead">
-            <div class = "card"  style="width: 30%;">
-                <div class ="card-header text-light bg-primary text-center">
-                    Menu
-                </div>
-                <div class="card-body">
-                    <div class="btn-group"><ul>
-                        <li><button class="btn btn-outline-primary mt-2 mb-2" type="button" data-bs-toggle="collapse" data-bs-target="#collapseCreate" aria-expanded="false" aria-controls="collapseExample">
-                            Make a Sign
-                        </button>
-                        <div id="collapseCreate" class="collapse row pt-3 pb-3" style="margin-right: 4%; margin-left: 4%;">
-                            <ul>
-                                <li><a class="btn btn-secondary mt-2 mb-2" href = "{% url 'signgen' signsize='B' %}"> B Size </a></li>
-                                <li><a class="btn btn-secondary mt-2 mb-2" href = "{% url 'signgen' signsize='C' %}"> C Size </a></li>
-                                <li><a class="btn btn-secondary mt-2 mb-2" href = "{% url 'signgen' signsize='D' %}"> D Size </a></li>
-                            </ul>
-                        </div></li>
-                        <li><a class="btn btn-outline-primary mt-2 mb-2 disabled" >Frequently Remade Signs</a></li>
-                        <li><a class="btn btn-outline-primary mt-2 mb-2 disabled">ePlum</a></li>
-                        <li><a class="btn btn-outline-primary mt-2 mb-2 disabled">Front Office</a></li>
-                        <li><a class="btn btn-outline-primary mt-2 mb-2" href = "https://drive.google.com/drive/folders/1pdahhBUczZFN0Gjg_fMTxnIyGgN5Ghko?usp=sharing">Brandon's PAC Notes</a></li>
-                    </div></ul>
+            <div class="col-md-3">
+                <div class = "card">
+                    <div class ="card-header text-light bg-primary text-center">
+                        Menu
+                    </div>
+                    <div class="card-body">
+                        <div class="btn-group"><ul>
+                            <li><button class="btn btn-outline-primary mt-2 mb-2" type="button" data-bs-toggle="collapse" data-bs-target="#collapseCreate" aria-expanded="false" aria-controls="collapseExample">
+                                Make a Sign
+                            </button>
+                            <div id="collapseCreate" class="collapse row pt-3 pb-3" style="margin-right: 4%; margin-left: 4%;">
+                                <ul>
+                                    <li><a class="btn btn-secondary mt-2 mb-2" href = "{% url 'signgen' signsize='B' %}"> B Size </a></li>
+                                    <li><a class="btn btn-secondary mt-2 mb-2" href = "{% url 'signgen' signsize='C' %}"> C Size </a></li>
+                                    <li><a class="btn btn-secondary mt-2 mb-2 disabled" href = "{% url 'signgen' signsize='D' %}"> D Size </a></li>
+                                </ul>
+                            </div></li>
+                            <li><a class="btn btn-outline-primary mt-2 mb-2 disabled" >Frequently Remade Signs</a></li>
+                            <li><a class="btn btn-outline-primary mt-2 mb-2 disabled">ePlum</a></li>
+                            <li><a class="btn btn-outline-primary mt-2 mb-2 disabled">Front Office</a></li>
+                            <li><a class="btn btn-outline-primary mt-2 mb-2" href = "https://drive.google.com/drive/folders/1pdahhBUczZFN0Gjg_fMTxnIyGgN5Ghko?usp=sharing">Brandon's PAC Notes</a></li>
+                        </div></ul>
+                    </div>
                 </div>
             </div>
-            <div class="card" style="width: 30%;">
-                <div class="card-header text-center text-light bg-primary">
-                    Unit Price Calculator
+            <div class="col-md-3"></div>
+            <div class="col-md-3">
+                <div class="card">
+                    <div class="card-header text-center text-light bg-primary">
+                        Unit Price Calculator
+                    </div>
+                    <form method="POST" class="form-group">
+                        {%csrf_token%}
+                        {{ form.as_p }}
+                        <button type="submit" class="btn btn-success">Submit</button>
+                    </form>
+                    {% if unit_price %}
+                    <p class = "pt-3"><strong>Unit Price:</strong> {{ unit_price }}</p>
+                    <p class = "pt-3"><strong>Math: </strong>{{ math }}</p>
+                    <p class = "pt-3">The product is measured in {{ unit_type }}, so we multiply by {{ units }} since there are {{units}} {{unit_type}} in a {{ unit_type2 }}.</p>
+                    {% endif %}
                 </div>
-                <form method="POST" class="form-group">
-                    {%csrf_token%}
-                    {{ form.as_p }}
-                    <button type="submit" class="btn btn-success">Submit</button>
-                </form>
-                {% if unit_price %}
-                <p class = "pt-3"><strong>Unit Price:</strong> {{ unit_price }}</p>
-                <p class = "pt-3"><strong>Math: </strong>{{ math }}</p>
-                <p class = "pt-3">The product is weighed in {{ unit_type }}, so we multiply by {{ units }} since there are {{units}} {{unit_type}} in a {{ unit_type2 }}.</p>
-                {% endif %}
             </div>
     </div>
 </div>

@@ -31,7 +31,7 @@ class SignInfoFormDollar(forms.Form):
             ('qt.', "qt"),
             ('fl oz.', "fl oz."),
             ('ct.', "count"),
-            ('ea', "each"),
+            ('ea.', "each"),
             ('sq ft.', "square feet")
         )
 
