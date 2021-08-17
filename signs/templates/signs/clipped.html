@@ -1,0 +1,33 @@
+{% extends 'base_generic.html' %}
+
+{% block content %}
+
+<div class="row">
+    <h1 class="text-center"> eCoupon Loader (Still under construction) :) </h1>
+</div>
+<div class="row"> 
+    <div class="col-lg-6">
+        <div class="card-header bg-primary text-center text-light"> eCoupons Clipped </div>
+        <div class="card">
+            <div class="card-body">
+                {{ output_clipped |safe }}
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <div class="card-header bg-primary text-center text-light"> Session Summary </div>
+        <div class="card">
+            <div class="card-body">
+                {{ totals |safe }}
+            </div>
+        </div>
+        <div class="card-header bg-primary text-center text-light"> eCoupons Found </div>
+        <div class="card">
+            <div class="card-body">
+                {{ output |safe }}
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

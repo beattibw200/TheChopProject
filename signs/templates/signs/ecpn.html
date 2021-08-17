@@ -1,0 +1,33 @@
+{% extends 'base_generic.html' %}
+
+{% block content %}
+
+<div class="row">
+    <h1 class="text-center"> eCoupon Loader (Still under construction) :) </h1>
+</div>
+<div class="row mt-3">
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+        <div class="card-header bg-primary text-light text-center"> eCoupon Flooder </div>
+        <div class="card text-center">
+            <div class="card-body">
+                <div class="card-title pb-3 pt-3"> Enter your PriceChopper.com login below. </div>
+                <form method="POST" class="form-group">
+                    {%csrf_token%}
+                    {{ form.as_p }}
+                    <button type="submit" class="btn btn-success">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4"></div>
+</div>
+<div class="row">
+    <p> {{ output }} </p>
+</div>
+
+
+
+
+
+{% endblock %}

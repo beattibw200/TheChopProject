@@ -2,6 +2,15 @@ from django import forms
 from .models import *
 from django.forms import ModelForm
 
+class eCouponForm(forms.Form):
+    def __init__(self, *args, **kwargs):
+
+        super(eCouponForm, self).__init__(*args, **kwargs)
+        self.fields['username'] = forms.CharField()
+        self.fields['password'] = forms.CharField(widget=forms.PasswordInput())
+
+
+    
 class SignTypeForm(forms.Form):
 
     def __init__(self, *args, **kwargs):
